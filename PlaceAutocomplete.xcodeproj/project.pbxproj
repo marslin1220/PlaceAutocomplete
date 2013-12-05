@@ -18,6 +18,8 @@
 		A2B8AE2C1850590800D5DC90 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2B8AE2B1850590800D5DC90 /* Default-568h@2x.png */; };
 		A2B8AE2F1850590800D5DC90 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A2B8AE2D1850590800D5DC90 /* MainStoryboard.storyboard */; };
 		A2B8AE321850590800D5DC90 /* PAViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A2B8AE311850590800D5DC90 /* PAViewController.m */; };
+		A2EB4AA118505FF800A34D5B /* PAPlaceTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A2EB4AA018505FF800A34D5B /* PAPlaceTableViewDelegate.m */; };
+		A2EB4AA418507B0200A34D5B /* PAPlaceApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A2EB4AA318507B0200A34D5B /* PAPlaceApiManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,6 +39,10 @@
 		A2B8AE2E1850590800D5DC90 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		A2B8AE301850590800D5DC90 /* PAViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAViewController.h; sourceTree = "<group>"; };
 		A2B8AE311850590800D5DC90 /* PAViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PAViewController.m; sourceTree = "<group>"; };
+		A2EB4A9F18505FF800A34D5B /* PAPlaceTableViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAPlaceTableViewDelegate.h; sourceTree = "<group>"; };
+		A2EB4AA018505FF800A34D5B /* PAPlaceTableViewDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAPlaceTableViewDelegate.m; sourceTree = "<group>"; };
+		A2EB4AA218507B0200A34D5B /* PAPlaceApiManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAPlaceApiManager.h; sourceTree = "<group>"; };
+		A2EB4AA318507B0200A34D5B /* PAPlaceApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAPlaceApiManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +94,10 @@
 				A2B8AE2D1850590800D5DC90 /* MainStoryboard.storyboard */,
 				A2B8AE301850590800D5DC90 /* PAViewController.h */,
 				A2B8AE311850590800D5DC90 /* PAViewController.m */,
+				A2EB4A9F18505FF800A34D5B /* PAPlaceTableViewDelegate.h */,
+				A2EB4AA018505FF800A34D5B /* PAPlaceTableViewDelegate.m */,
+				A2EB4AA218507B0200A34D5B /* PAPlaceApiManager.h */,
+				A2EB4AA318507B0200A34D5B /* PAPlaceApiManager.m */,
 				A2B8AE1C1850590800D5DC90 /* Supporting Files */,
 			);
 			path = PlaceAutocomplete;
@@ -177,6 +187,8 @@
 				A2B8AE221850590800D5DC90 /* main.m in Sources */,
 				A2B8AE261850590800D5DC90 /* PAAppDelegate.m in Sources */,
 				A2B8AE321850590800D5DC90 /* PAViewController.m in Sources */,
+				A2EB4AA118505FF800A34D5B /* PAPlaceTableViewDelegate.m in Sources */,
+				A2EB4AA418507B0200A34D5B /* PAPlaceApiManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +311,7 @@
 				A2B8AE371850590800D5DC90 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

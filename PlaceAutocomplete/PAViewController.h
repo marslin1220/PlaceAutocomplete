@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PAViewController : UIViewController
+@interface PAViewController : UIViewController <UITextFieldDelegate>
+
+@property (weak, nonatomic) IBOutlet UITextField *placeTextField;
+@property (weak, nonatomic) IBOutlet UITableView *placeTableView;
 
 @end
