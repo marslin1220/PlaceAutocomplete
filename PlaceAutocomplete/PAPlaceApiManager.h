@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface PAPlaceApiManager : NSObject
+@interface PAPlaceApiManager : NSObject <NSURLConnectionDataDelegate>
 
 @property NSMutableArray *predictions;
 
