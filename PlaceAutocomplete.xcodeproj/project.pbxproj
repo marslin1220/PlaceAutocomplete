@@ -21,7 +21,6 @@
 		A2EB4AA118505FF800A34D5B /* PAPlaceTableViewDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A2EB4AA018505FF800A34D5B /* PAPlaceTableViewDelegate.m */; };
 		A2EB4AA418507B0200A34D5B /* PAPlaceApiManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A2EB4AA318507B0200A34D5B /* PAPlaceApiManager.m */; };
 		A2EB4AA71851B88D00A34D5B /* PAPlaceJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = A2EB4AA61851B88D00A34D5B /* PAPlaceJsonParser.m */; };
-		A2EB4AAA1851B8F100A34D5B /* PAPlacePrediction.m in Sources */ = {isa = PBXBuildFile; fileRef = A2EB4AA91851B8F100A34D5B /* PAPlacePrediction.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,8 +46,6 @@
 		A2EB4AA318507B0200A34D5B /* PAPlaceApiManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAPlaceApiManager.m; sourceTree = "<group>"; };
 		A2EB4AA51851B88D00A34D5B /* PAPlaceJsonParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAPlaceJsonParser.h; sourceTree = "<group>"; };
 		A2EB4AA61851B88D00A34D5B /* PAPlaceJsonParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAPlaceJsonParser.m; sourceTree = "<group>"; };
-		A2EB4AA81851B8F100A34D5B /* PAPlacePrediction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAPlacePrediction.h; sourceTree = "<group>"; };
-		A2EB4AA91851B8F100A34D5B /* PAPlacePrediction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAPlacePrediction.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,8 +103,6 @@
 				A2EB4AA318507B0200A34D5B /* PAPlaceApiManager.m */,
 				A2EB4AA51851B88D00A34D5B /* PAPlaceJsonParser.h */,
 				A2EB4AA61851B88D00A34D5B /* PAPlaceJsonParser.m */,
-				A2EB4AA81851B8F100A34D5B /* PAPlacePrediction.h */,
-				A2EB4AA91851B8F100A34D5B /* PAPlacePrediction.m */,
 				A2B8AE1C1850590800D5DC90 /* Supporting Files */,
 			);
 			path = PlaceAutocomplete;
@@ -200,7 +195,6 @@
 				A2EB4AA118505FF800A34D5B /* PAPlaceTableViewDelegate.m in Sources */,
 				A2EB4AA418507B0200A34D5B /* PAPlaceApiManager.m in Sources */,
 				A2EB4AA71851B88D00A34D5B /* PAPlaceJsonParser.m in Sources */,
-				A2EB4AAA1851B8F100A34D5B /* PAPlacePrediction.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

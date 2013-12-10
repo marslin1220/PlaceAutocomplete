@@ -9,16 +9,28 @@
 #import "PAPlaceApiManager.h"
 #import "PAPlaceJsonParser.h"
 
-#define PLACE_AUTOCOMPLETE @"https://maps.googleapis.com/maps/api/place/autocomplete"
-#define PLACE_DETAILS @"https://maps.googleapis.com/maps/api/place/details"
+#define PLACE_AUTOCOMPLETE @"https://maps.googleapis.com/maps/api/place/autocomplete/json"
+#define PLACE_DETAILS @"https://maps.googleapis.com/maps/api/place/details/json"
+#define API_KEY @""
 
 @interface PAPlaceApiManager()
 
-@property NSData *responseData;
+@property NSMutableData *responseData;
 
 @end
 
 @implementation PAPlaceApiManager
+
+- (PAPlaceApiManager *)initWithDelegate:(id<PAPlaceApiDelegate>)delegate
+{
+    self = [super init];
+    if (self) {
+        self.delegate = delegate;
+        self.responseData = [[NSMutableData alloc] init];
+    }
+    
+    return self;
+}
 
 - (void)predictionsWithInput:(NSString *)input
 {
@@ -27,7 +39,7 @@
 
 - (void)requestForPlaceAutoCompleteWithInput:(NSString *)input
 {
-    NSURL *placeQueryUrl = [NSURL URLWithString:PLACE_AUTOCOMPLETE];
+    NSURL *placeQueryUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@?input=%@&key=%@", PLACE_AUTOCOMPLETE, input, API_KEY]];
     NSURLRequest *request = [NSURLRequest requestWithURL:placeQueryUrl];
     NSURLConnection *connnection = [NSURLConnection connectionWithRequest:request
                                                                  delegate:self];
@@ -40,23 +52,34 @@
 #pragma mark Implement NSURLConnectionDelegate
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
 {
-    
+    NSLog(@"> %s", __PRETTY_FUNCTION__);
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
 {
-    self.responseData = data;
-    NSArray *predictions = [PAPlaceJsonParser predistionsWithResponseData:self.responseData];
+    NSLog(@"> %s data: %@", __PRETTY_FUNCTION__, [[NSString alloc] initWithData:data
+                                                                       encoding:NSUTF8StringEncoding]);
+    
+    if (data) {
+        [self.responseData appendData:data];
+    }
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
+    NSLog(@"> %s", __PRETTY_FUNCTION__);
     
+    NSArray *predictions = [PAPlaceJsonParser predistionsWithResponseData:self.responseData];
+    if (predictions) {
+        [self.delegate didReceivePredictions:predictions];
+    }
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
+    NSLog(@"> %s error: %@", __PRETTY_FUNCTION__, error);
     
+    [self.delegate didFailWithError:error];
 }
 
 @end

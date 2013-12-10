@@ -28,7 +28,7 @@
         self.placeTableView = tableView;
         self.placeTableView.delegate = self;
         self.placeTableView.dataSource = self;
-        self.placeApiManager = [PAPlaceApiManager new];
+        self.placeApiManager = [[PAPlaceApiManager alloc] initWithDelegate:self];
     }
     
     return self;
@@ -43,6 +43,8 @@
     NSString *substring = [NSString stringWithString:textField.text];
     substring = [substring stringByReplacingCharactersInRange:range withString:string];
     
+    [self.placeApiManager predictionsWithInput:substring];
+    
     return YES;
 }
 
@@ -50,12 +52,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger) section
 {
-    return [self.placeApiManager.predictions count];
+    return [self.predictions count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    
     UITableViewCell *cell = nil;
     static NSString *AutoCompleteRowIdentifier = @"AutoCompleteRowIdentifier";
     cell = [tableView dequeueReusableCellWithIdentifier:AutoCompleteRowIdentifier];
@@ -64,7 +65,7 @@
                 initWithStyle:UITableViewCellStyleDefault reuseIdentifier:AutoCompleteRowIdentifier];
     }
     
-    cell.textLabel.text = [self.placeApiManager.predictions objectAtIndex:indexPath.row];
+    cell.textLabel.text = [self.predictions objectAtIndex:indexPath.row];
     
     return cell;
 }
@@ -75,6 +76,29 @@
 {
     UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
     self.placeTextField.text = selectedCell.textLabel.text;
+}
+
+#pragma mark PAPlaceApiDelegate methods
+
+- (void)didFailWithError:(NSError *)error
+{
+    self.placeTableView.hidden = YES;
+    NSLog(@"> %s error: %@", __PRETTY_FUNCTION__, error);
+}
+
+- (void)didReceivePredictions:(NSArray *)predictions
+{
+    NSLog(@"> %s predictions: %@", __PRETTY_FUNCTION__, predictions);
+    
+    self.predictions = predictions;
+    
+    if (self.predictions) {
+        self.placeTableView.hidden = NO;
+        [self.placeTableView reloadData];
+    }
+    else {
+        self.placeTableView.hidden = YES;
+    }
 }
 
 @end

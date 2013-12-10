@@ -12,11 +12,34 @@
 
 + (NSArray *)predistionsWithResponseData:(NSData *)data
 {
-    NSMutableArray *predictions = [[NSMutableArray alloc] init];
+    NSLog(@"> %s", __PRETTY_FUNCTION__);
+    
+    if (!data) {
+        return nil;
+    }
     
     NSError *error = nil;
-    id jsonObject = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:&error];
-
+    id jsonObject = [NSJSONSerialization JSONObjectWithData:data
+                                                    options:NSJSONReadingMutableContainers
+                                                      error:&error];
+    
+    if (!error) {
+        NSLog(@"> %s error: %@", __PRETTY_FUNCTION__, error);
+        return nil;
+    }
+    
+    if (![NSJSONSerialization isValidJSONObject:jsonObject]) {
+        return nil;
+    }
+    
+    if (![[jsonObject objectForKey:@"status"] isEqualToString:@"OK"]) {
+        NSLog(@"> %s status: %@", __PRETTY_FUNCTION__, [jsonObject objectForKey:@"status"]);
+        
+        return nil;
+    }
+    
+    NSArray *predictions = [jsonObject objectForKey:@"predictions"];
+    
     return predictions;
 }
 

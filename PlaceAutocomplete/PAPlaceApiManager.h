@@ -8,8 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol PAPlaceApiDelegate <NSObject>
+
+- (void)didReceivePredictions:(NSArray *)predictions;
+- (void)didFailWithError:(NSError *)error;
+
+@end
+
+
 @interface PAPlaceApiManager : NSObject <NSURLConnectionDataDelegate>
 
-@property NSMutableArray *predictions;
+@property id<PAPlaceApiDelegate> delegate;
+
+- (PAPlaceApiManager *)initWithDelegate:(id<PAPlaceApiDelegate>)delegate;
+- (void)predictionsWithInput:(NSString *)input;
 
 @end

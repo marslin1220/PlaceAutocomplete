@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "PAPlaceApiManager.h"
 
-@interface PAPlaceTableViewDelegate : NSObject <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
+@interface PAPlaceTableViewDelegate : NSObject <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate, PAPlaceApiDelegate>
+
+@property NSArray *predictions;
 
 - (PAPlaceTableViewDelegate *)initWithPlaceTextField:(UITextField *)textField
                                         andTableView:(UITableView *)tableView;
