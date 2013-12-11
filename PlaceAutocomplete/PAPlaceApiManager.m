@@ -39,7 +39,7 @@
 
 - (void)requestForPlaceAutoCompleteWithInput:(NSString *)input
 {
-    NSURL *placeQueryUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@?input=%@&key=%@", PLACE_AUTOCOMPLETE, input, API_KEY]];
+    NSURL *placeQueryUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@?input=%@&sensor=true&key=%@", PLACE_AUTOCOMPLETE, input, API_KEY]];
     NSURLRequest *request = [NSURLRequest requestWithURL:placeQueryUrl];
     NSURLConnection *connnection = [NSURLConnection connectionWithRequest:request
                                                                  delegate:self];
@@ -73,6 +73,8 @@
     if (predictions) {
         [self.delegate didReceivePredictions:predictions];
     }
+    
+    self.responseData = [[NSMutableData alloc] init];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
