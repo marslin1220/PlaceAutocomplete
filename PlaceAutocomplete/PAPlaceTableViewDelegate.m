@@ -38,7 +38,7 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    self.placeTableView = NO;
+    self.placeTableView.hidden = NO;
     
     NSString *substring = [NSString stringWithString:textField.text];
     substring = [substring stringByReplacingCharactersInRange:range withString:string];
@@ -65,7 +65,7 @@
                 initWithStyle:UITableViewCellStyleDefault reuseIdentifier:AutoCompleteRowIdentifier];
     }
     
-    cell.textLabel.text = [self.predictions objectAtIndex:indexPath.row];
+    cell.textLabel.text = [[self.predictions objectAtIndex:indexPath.row] objectForKey:@"description"];
     
     return cell;
 }
@@ -88,7 +88,7 @@
 
 - (void)didReceivePredictions:(NSArray *)predictions
 {
-    NSLog(@"> %s predictions: %@", __PRETTY_FUNCTION__, predictions);
+    NSLog(@"> %s", __PRETTY_FUNCTION__);
     
     self.predictions = predictions;
     
