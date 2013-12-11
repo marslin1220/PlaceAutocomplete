@@ -15,6 +15,7 @@
     NSLog(@"> %s", __PRETTY_FUNCTION__);
     
     if (!data) {
+        NSLog(@"> %s !data", __PRETTY_FUNCTION__);
         return nil;
     }
     
@@ -23,7 +24,7 @@
                                                     options:NSJSONReadingMutableContainers
                                                       error:&error];
     
-    if (!error) {
+    if (error) {
         NSLog(@"> %s error: %@", __PRETTY_FUNCTION__, error);
         return nil;
     }
