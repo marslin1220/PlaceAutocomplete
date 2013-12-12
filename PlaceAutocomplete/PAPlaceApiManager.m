@@ -39,7 +39,9 @@
 
 - (void)requestForPlaceAutoCompleteWithInput:(NSString *)input
 {
-    NSURL *placeQueryUrl = [NSURL URLWithString:[NSString stringWithFormat:@"%@?input=%@&sensor=true&key=%@", PLACE_AUTOCOMPLETE, input, API_KEY]];
+    NSString *queryString = [NSString stringWithFormat:@"%@?input=%@&sensor=true&key=%@", PLACE_AUTOCOMPLETE, input, API_KEY];
+    queryString = [queryString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSURL *placeQueryUrl = [NSURL URLWithString:queryString];
     NSURLRequest *request = [NSURLRequest requestWithURL:placeQueryUrl];
     NSURLConnection *connnection = [NSURLConnection connectionWithRequest:request
                                                                  delegate:self];
