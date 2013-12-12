@@ -76,6 +76,8 @@
 {
     UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
     self.placeTextField.text = selectedCell.textLabel.text;
+    
+    self.placeTableView.hidden = YES;
 }
 
 #pragma mark PAPlaceApiDelegate methods
