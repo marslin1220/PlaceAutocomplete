@@ -38,10 +38,14 @@
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
-    self.placeTableView.hidden = NO;
-    
     NSString *substring = [NSString stringWithString:textField.text];
     substring = [substring stringByReplacingCharactersInRange:range withString:string];
+    
+    if ([substring isEqualToString:@""]) {
+        self.placeTableView.hidden = YES;
+        
+        return YES;
+    }
     
     [self.placeApiManager predictionsWithInput:substring];
     
