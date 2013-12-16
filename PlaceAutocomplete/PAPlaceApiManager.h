@@ -11,6 +11,7 @@
 @protocol PAPlaceApiDelegate <NSObject>
 
 - (void)didReceivePredictions:(NSArray *)predictions;
+- (void)didReceiveResult:(NSDictionary *)result;
 - (void)didFailWithError:(NSError *)error;
 
 @end
@@ -22,5 +23,6 @@
 
 - (PAPlaceApiManager *)initWithDelegate:(id<PAPlaceApiDelegate>)delegate;
 - (void)predictionsWithInput:(NSString *)input;
+- (void)resultWithReference:(NSString *)reference;
 
 @end

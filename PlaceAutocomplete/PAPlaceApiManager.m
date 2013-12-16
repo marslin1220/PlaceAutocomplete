@@ -37,10 +37,31 @@
     [self requestForPlaceAutoCompleteWithInput:input];
 }
 
+- (void)resultWithReference:(NSString *)reference
+{
+    [self requestForPlaceDetailWithReference:reference];
+}
+
 - (void)requestForPlaceAutoCompleteWithInput:(NSString *)input
 {
     NSString *queryString = [NSString stringWithFormat:@"%@?input=%@&sensor=true&key=%@", PLACE_AUTOCOMPLETE, input, API_KEY];
     queryString = [queryString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSLog(@"> %s queryString: %@", __PRETTY_FUNCTION__, queryString);
+    NSURL *placeQueryUrl = [NSURL URLWithString:queryString];
+    NSURLRequest *request = [NSURLRequest requestWithURL:placeQueryUrl];
+    NSURLConnection *connnection = [NSURLConnection connectionWithRequest:request
+                                                                 delegate:self];
+    
+    if (!connnection) {
+        NSLog(@"Can not create connection!");
+    }
+}
+
+- (void)requestForPlaceDetailWithReference:(NSString *)reference
+{
+    NSString *queryString = [NSString stringWithFormat:@"%@?reference=%@&sensor=true&key=%@", PLACE_DETAILS, reference, API_KEY];
+    queryString = [queryString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+    NSLog(@"> %s queryString: %@", __PRETTY_FUNCTION__, queryString);
     NSURL *placeQueryUrl = [NSURL URLWithString:queryString];
     NSURLRequest *request = [NSURLRequest requestWithURL:placeQueryUrl];
     NSURLConnection *connnection = [NSURLConnection connectionWithRequest:request
@@ -71,9 +92,17 @@
 {
     NSLog(@"> %s", __PRETTY_FUNCTION__);
     
-    NSArray *predictions = [PAPlaceJsonParser predistionsWithResponseData:self.responseData];
-    if (predictions) {
+    id jsonObject = [PAPlaceJsonParser jsonWithResponseData:self.responseData];
+    
+    NSArray *predictions = [jsonObject objectForKey:@"predictions"];
+    NSDictionary *result = [jsonObject objectForKey:@"result"];
+    
+    if (predictions && [self.delegate respondsToSelector:@selector(didReceivePredictions:)]) {
         [self.delegate didReceivePredictions:predictions];
+    }
+    
+    if (result && [self.delegate respondsToSelector:@selector(didReceiveResult:)]) {
+        [self.delegate didReceiveResult:result];
     }
     
     self.responseData = [[NSMutableData alloc] init];

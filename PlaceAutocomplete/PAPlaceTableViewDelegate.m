@@ -82,6 +82,9 @@
     self.placeTextField.text = selectedCell.textLabel.text;
     
     self.placeTableView.hidden = YES;
+    
+    NSString *placeReference = [[self.predictions objectAtIndex:indexPath.row] objectForKey:@"reference"];
+    [self.placeApiManager resultWithReference:placeReference];
 }
 
 #pragma mark PAPlaceApiDelegate methods
@@ -105,6 +108,11 @@
     else {
         self.placeTableView.hidden = YES;
     }
+}
+
+- (void)didReceiveResult:(NSDictionary *)result
+{
+    NSLog(@"> %s result: %@", __PRETTY_FUNCTION__, [result description]);
 }
 
 @end

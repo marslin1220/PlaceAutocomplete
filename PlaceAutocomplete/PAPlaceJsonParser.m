@@ -10,7 +10,7 @@
 
 @implementation PAPlaceJsonParser
 
-+ (NSArray *)predistionsWithResponseData:(NSData *)data
++ (NSDictionary *)jsonWithResponseData:(NSData *)data
 {
     NSLog(@"> %s", __PRETTY_FUNCTION__);
     
@@ -39,9 +39,7 @@
         return nil;
     }
     
-    NSArray *predictions = [jsonObject objectForKey:@"predictions"];
-    
-    return predictions;
+    return jsonObject;
 }
 
 @end
