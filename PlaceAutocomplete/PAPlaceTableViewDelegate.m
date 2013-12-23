@@ -9,6 +9,8 @@
 #import "PAPlaceTableViewDelegate.h"
 #import "PAPlaceApiManager.h"
 
+#define POWER_BY_GOOGLE_ICON @"powered-by-google-on-white.png"
+
 @interface PAPlaceTableViewDelegate()
 
 @property UITableView *placeTableView;
@@ -42,8 +44,6 @@
     substring = [substring stringByReplacingCharactersInRange:range withString:string];
     
     if ([substring isEqualToString:@""]) {
-        self.placeTableView.hidden = YES;
-        
         return YES;
     }
     
@@ -56,7 +56,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger) section
 {
-    return [self.predictions count];
+    // Add one cell for Google Place icon
+    return [self.predictions count] + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -69,7 +70,17 @@
                 initWithStyle:UITableViewCellStyleDefault reuseIdentifier:AutoCompleteRowIdentifier];
     }
     
-    cell.textLabel.text = [[self.predictions objectAtIndex:indexPath.row] objectForKey:@"description"];
+    if (indexPath.row < [self.predictions count]) {
+        cell.textLabel.text = [[self.predictions objectAtIndex:indexPath.row] objectForKey:@"description"];
+    }
+    else {
+        UIImage *googlePlaceIcon = [UIImage imageNamed:POWER_BY_GOOGLE_ICON];
+        UIImageView * imageView = [[UIImageView alloc] initWithImage:googlePlaceIcon];
+        imageView.center = cell.center;
+        
+        [cell.contentView addSubview:imageView];
+        [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
+    }
     
     return cell;
 }
@@ -78,10 +89,13 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    // If select Google icon, ignore it.
+    if (indexPath.row == [self.predictions count]) {
+        return;
+    }
+    
     UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
     self.placeTextField.text = selectedCell.textLabel.text;
-    
-    self.placeTableView.hidden = YES;
     
     NSString *placeReference = [[self.predictions objectAtIndex:indexPath.row] objectForKey:@"reference"];
     [self.placeApiManager resultWithReference:placeReference];
@@ -91,7 +105,6 @@
 
 - (void)didFailWithError:(NSError *)error
 {
-    self.placeTableView.hidden = YES;
     NSLog(@"> %s error: %@", __PRETTY_FUNCTION__, error);
 }
 
@@ -102,11 +115,7 @@
     self.predictions = predictions;
     
     if (self.predictions) {
-        self.placeTableView.hidden = NO;
         [self.placeTableView reloadData];
-    }
-    else {
-        self.placeTableView.hidden = YES;
     }
 }
 

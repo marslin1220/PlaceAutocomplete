@@ -23,8 +23,6 @@
     
     self.placeTableViewDelegate = [[PAPlaceTableViewDelegate alloc] initWithPlaceTextField:self.placeTextField
                                                                               andTableView:self.placeTableView];
-    
-    self.placeTableView.hidden = YES;
 }
 
 @end
