@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A2092EB51860AD130001B530 /* powered-by-google-on-white.png in Resources */ = {isa = PBXBuildFile; fileRef = A2092EB31860AD130001B530 /* powered-by-google-on-white.png */; };
+		A2092EB61860AD130001B530 /* powered-by-google-on-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A2092EB41860AD130001B530 /* powered-by-google-on-white@2x.png */; };
 		A2B8AE161850590800D5DC90 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2B8AE151850590800D5DC90 /* UIKit.framework */; };
 		A2B8AE181850590800D5DC90 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2B8AE171850590800D5DC90 /* Foundation.framework */; };
 		A2B8AE1A1850590800D5DC90 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2B8AE191850590800D5DC90 /* CoreGraphics.framework */; };
@@ -24,6 +26,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		A2092EB31860AD130001B530 /* powered-by-google-on-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "powered-by-google-on-white.png"; sourceTree = "<group>"; };
+		A2092EB41860AD130001B530 /* powered-by-google-on-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "powered-by-google-on-white@2x.png"; sourceTree = "<group>"; };
 		A2B8AE121850590800D5DC90 /* PlaceAutocomplete.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlaceAutocomplete.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2B8AE151850590800D5DC90 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A2B8AE171850590800D5DC90 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -62,6 +66,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A2092EB71860AD190001B530 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				A2092EB31860AD130001B530 /* powered-by-google-on-white.png */,
+				A2092EB41860AD130001B530 /* powered-by-google-on-white@2x.png */,
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
 		A2B8AE091850590800D5DC90 = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +105,7 @@
 		A2B8AE1B1850590800D5DC90 /* PlaceAutocomplete */ = {
 			isa = PBXGroup;
 			children = (
+				A2092EB71860AD190001B530 /* Resource */,
 				A2B8AE241850590800D5DC90 /* PAAppDelegate.h */,
 				A2B8AE251850590800D5DC90 /* PAAppDelegate.m */,
 				A2B8AE2D1850590800D5DC90 /* MainStoryboard.storyboard */,
@@ -174,11 +188,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A2092EB61860AD130001B530 /* powered-by-google-on-white@2x.png in Resources */,
 				A2B8AE201850590800D5DC90 /* InfoPlist.strings in Resources */,
 				A2B8AE281850590800D5DC90 /* Default.png in Resources */,
 				A2B8AE2A1850590800D5DC90 /* Default@2x.png in Resources */,
 				A2B8AE2C1850590800D5DC90 /* Default-568h@2x.png in Resources */,
 				A2B8AE2F1850590800D5DC90 /* MainStoryboard.storyboard in Resources */,
+				A2092EB51860AD130001B530 /* powered-by-google-on-white.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
