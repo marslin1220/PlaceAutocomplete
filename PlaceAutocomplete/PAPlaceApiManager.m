@@ -8,10 +8,10 @@
 
 #import "PAPlaceApiManager.h"
 #import "PAPlaceJsonParser.h"
+#import "PAPlaceApiKey.h"
 
 #define PLACE_AUTOCOMPLETE @"https://maps.googleapis.com/maps/api/place/autocomplete/json"
 #define PLACE_DETAILS @"https://maps.googleapis.com/maps/api/place/details/json"
-#define API_KEY @""
 
 @interface PAPlaceApiManager()
 

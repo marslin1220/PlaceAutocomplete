@@ -28,6 +28,7 @@
 /* Begin PBXFileReference section */
 		A2092EB31860AD130001B530 /* powered-by-google-on-white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "powered-by-google-on-white.png"; sourceTree = "<group>"; };
 		A2092EB41860AD130001B530 /* powered-by-google-on-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "powered-by-google-on-white@2x.png"; sourceTree = "<group>"; };
+		A2092EB81871A8D90001B530 /* PAPlaceApiKey.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PAPlaceApiKey.h; sourceTree = "<group>"; };
 		A2B8AE121850590800D5DC90 /* PlaceAutocomplete.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlaceAutocomplete.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A2B8AE151850590800D5DC90 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		A2B8AE171850590800D5DC90 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -106,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				A2092EB71860AD190001B530 /* Resource */,
+				A2092EB81871A8D90001B530 /* PAPlaceApiKey.h */,
 				A2B8AE241850590800D5DC90 /* PAAppDelegate.h */,
 				A2B8AE251850590800D5DC90 /* PAAppDelegate.m */,
 				A2B8AE2D1850590800D5DC90 /* MainStoryboard.storyboard */,
