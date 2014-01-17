@@ -10,6 +10,6 @@
 
 @interface PAPlaceJsonParser : NSObject
 
-+ (NSArray *)jsonWithResponseData:(NSData *)data;
++ (NSDictionary *)jsonWithResponseData:(NSData *)data;
 
 @end
