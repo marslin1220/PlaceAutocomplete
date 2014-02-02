@@ -12,7 +12,8 @@
 @protocol PAPlaceApiDelegate <NSObject>
 
 - (void)didReceivePredictions:(NSArray *)predictions;
-- (void)didReceiveResult:(NSDictionary *)result;
+- (void)didReceiveDetail:(NSDictionary *)placeDetail;
+- (void)didReceiveSearchResult:(NSArray *)searchResult;
 - (void)didFailWithError:(NSError *)error;
 
 @end
@@ -23,7 +24,9 @@
 @property id<PAPlaceApiDelegate> delegate;
 
 - (PAPlaceApiManager *)initWithDelegate:(id<PAPlaceApiDelegate>)delegate;
-- (void)predictionsWithInput:(NSString *)input;
+- (void)requestForPlaceAutoCompleteWithInput:(NSString *)input;
+- (void)requestForPlaceNearby;
+- (void)requestForPlaceWithInput:(NSString *)input;
 - (void)resultWithReference:(NSString *)reference;
 - (void)startUpdatingLocation;
 - (void)stopUpdatingLocation;
