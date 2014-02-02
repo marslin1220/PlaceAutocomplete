@@ -13,9 +13,10 @@
 #define PLACE_AUTOCOMPLETE @"https://maps.googleapis.com/maps/api/place/autocomplete/json"
 #define PLACE_DETAILS @"https://maps.googleapis.com/maps/api/place/details/json"
 
-@interface PAPlaceApiManager()
+@interface PAPlaceApiManager() <CLLocationManagerDelegate>
 
 @property NSMutableData *responseData;
+@property (nonatomic) CLLocationManager *locationManager;
 
 @end
 
@@ -113,6 +114,42 @@
     NSLog(@"> %s error: %@", __PRETTY_FUNCTION__, error);
     
     [self.delegate didFailWithError:error];
+}
+
+#pragma mark - CLLocationManagerDelegate
+
+- (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error
+{
+    NSLog(@"didFailWithError: %@", error);
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    NSLog(@"didUpdateToLocation: %@", newLocation);
+}
+
+#pragma mark - CLLocationManager Operation
+
+- (CLLocationManager *)locationManager
+{
+    if (!_locationManager) {
+        _locationManager = [[CLLocationManager alloc] init];
+        _locationManager.delegate = self;
+        _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+        _locationManager.distanceFilter = 5;
+    }
+    
+    return _locationManager;
+}
+
+- (void)startUpdatingLocation
+{
+    [self.locationManager startUpdatingLocation];
+}
+
+- (void)stopUpdatingLocation
+{
+    [self.locationManager stopUpdatingLocation];
 }
 
 @end
